@@ -67,6 +67,9 @@ if __name__ == '__main__':
 	current = get_current_enrollment(class_of_interest)
 	if current.get('enrolled') != previous.get('enrolled'):
 		print 'enrollment changed, sending email'
-		send_email(body_template.format(class_number=class_of_interest, previous=previous.get('enrolled'), current=current.get('enrolled')))
+		send_email(body_template.format(
+			class_number=class_of_interest,
+			previous=previous.get('enrolled'),
+			current=current.get('enrolled')))
 	else:
 		print 'enrollment the same'
