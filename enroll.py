@@ -43,6 +43,7 @@ def get_current_enrollment(class_number):
 		if os.path.exists(previous_results_file):
 			# out_file exists as a directory
 			print 'there is a directory named {}. Please move it out of the way. We need a file there with that name'.format(out_file)
+			exit(1)
 		
 	print 'writing current enrollment to {}'.format(previous_results_file)
 
