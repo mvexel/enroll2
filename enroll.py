@@ -55,6 +55,8 @@ def get_current_enrollment(class_number):
 def get_previous_enrollment(class_number):
 	last_mod_time = time.ctime(os.path.getmtime(previous_results_file))
 	previous = None
+	if not os.path.isfile(previous_results_file):
+		return None
 	with open(previous_results_file, 'r') as fh:
 		previous = json.load(fh)
 	return {'enrolled': get_enrollment_for_class(previous, class_of_interest), 'asof': last_mod_time}
