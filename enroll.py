@@ -25,8 +25,8 @@ def send_email(
 				"text": config.email.get('content')})
 
 def get_enrollment_for_class(enrollment_dict, class_number):
-	for row in enrollment_dict['results']:
-		if row['class_number'] == class_number:
+	for row in enrollment_dict.get('results'):
+		if row.get('class_number') == class_number:
 			return int(row.get('currently_number'))
 	return None
  
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 	current = get_current_enrollment(config.enrollment_source.get('class_of_interest'))
 	if current.get('enrolled') != previous.get('enrolled'):
 		print 'enrollment changed, sending email'
-		send_email(body_template.format(
+		send_email(config.email.get('body_template').format(
 			class_number=config.enrollment_source.get('class_of_interest'),
 			previous=previous.get('enrolled'),
 			current=current.get('enrolled')))
