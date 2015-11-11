@@ -17,7 +17,7 @@ def send_email(
 		print 'please set MAILGUN_API_KEY'
 		exit(1)
 	return requests.post(
-		"https://api.mailgun.net/v3/maproulette.org",
+		"https://api.mailgun.net/v3/maproulette.org/messages",
 		auth=("api", mailgun_api_key),
 		data={	"from": "Martijn <martijn@maproulette.org>",
 				"to": config.email.get('tos'),
