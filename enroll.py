@@ -22,7 +22,8 @@ def send_email(
 		data={	"from": "Martijn <martijn@maproulette.org>",
 				"to": config.email.get('tos'),
 				"subject": config.email.get('subject'),
-				"text": config.email.get('content')})
+				"text": content)
+
 
 def get_enrollment_for_class(enrollment_dict, class_number):
 	for row in enrollment_dict.get('results'):
