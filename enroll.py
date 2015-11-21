@@ -25,10 +25,13 @@ def send_email(
 				"text": content})
 
 def get_enrollment_for_class(enrollment_dict, class_number):
-	for row in enrollment_dict.get('results'):
-		if row.get('class_number') == class_number:
-			return int(row.get('currently_number'))
-	return None
+	if not enrollment_dict.get('results'):
+		return 0
+	else:
+		for row in enrollment_dict.get('results'):
+			if row.get('class_number') == class_number:
+				return int(row.get('currently_number'))
+	return 0
  
 
 def get_current_enrollment(class_number):
